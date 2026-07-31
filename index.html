@@ -51,6 +51,19 @@
             border-color: #ef4444;
             transform: translateY(-5px);
         }
+
+        /* Transición suave para el acordeón de beneficios */
+        .details-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+            opacity: 0;
+        }
+
+        .details-content.open {
+            max-height: 200px;
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
@@ -62,19 +75,37 @@
     <div class="content-overlay flex flex-col justify-between text-slate-200">
 
         <!-- MENÚ DE NAVEGACIÓN -->
-        <header class="bg-black/90 backdrop-blur-sm border-b border-red-900/60 sticky top-0 z-50">
+        <header class="bg-black/90 backdrop-blur-md border-b border-red-900/65 sticky top-0 z-50">
             <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
                 <div class="flex items-center space-x-3">
                     <img src="shark.jpg" alt="Shark Gym Logo" class="w-10 h-10 object-contain rounded-full bg-black border border-red-900 p-0.5">
                     <span class="text-xl font-black tracking-wider text-white">SHARK <span class="text-red-gym">GYM</span></span>
                 </div>
-                <nav class="hidden md:flex space-x-6 text-sm font-bold tracking-wide">
+                
+                <!-- Menú Desktop -->
+                <nav class="hidden md:flex space-x-6 text-sm font-bold tracking-wide items-center">
                     <a href="#superior" class="hover:text-red-gym transition">SUPERIOR</a>
                     <a href="#inferior" class="hover:text-red-gym transition">INFERIOR</a>
                     <a href="#cardio" class="hover:text-red-gym transition">CARDIO</a>
                     <a href="#relajacion" class="hover:text-red-gym transition">RELAJACIÓN</a>
-                    <a href="#planes" class="text-red-gym hover:text-white transition">PLANES</a>
+                    <a href="#planes" class="bg-red-gym/20 border border-red-600 text-red-gym px-4 py-1.5 rounded-full hover:bg-red-gym hover:text-white transition">PLANES</a>
                 </nav>
+
+                <!-- Botón Menú Hamburguesa (Móvil) -->
+                <button id="menu-btn" class="md:hidden text-white focus:outline-none p-2">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Menú Desplegable Móvil -->
+            <div id="mobile-menu" class="hidden md:hidden bg-black border-b border-red-900/50 px-4 pt-2 pb-6 space-y-3">
+                <a href="#superior" class="block text-sm font-bold hover:text-red-gym transition py-1">SUPERIOR</a>
+                <a href="#inferior" class="block text-sm font-bold hover:text-red-gym transition py-1">INFERIOR</a>
+                <a href="#cardio" class="block text-sm font-bold hover:text-red-gym transition py-1">CARDIO</a>
+                <a href="#relajacion" class="block text-sm font-bold hover:text-red-gym transition py-1">RELAJACIÓN</a>
+                <a href="#planes" class="block text-sm font-bold text-red-gym hover:text-white transition py-1">PLANES</a>
             </div>
         </header>
 
@@ -132,11 +163,11 @@
                     <div class="md:w-1/2 bg-black/50 h-56 w-full rounded-2xl flex items-center justify-center border border-red-900/40 text-red-900/80 font-semibold">[Foto Área Cardio]</div>
                 </div>
 
-                <!-- Piso 4: Relajación (Nuevo) -->
+                <!-- Piso 4: Relajación -->
                 <div id="relajacion" class="piso-card rounded-3xl p-8 md:p-12 flex flex-col md:flex-row-reverse items-center justify-between gap-12">
                     <div class="md:w-1/2 space-y-5">
                         <span class="text-red-gym font-black tracking-widest text-xs uppercase px-3 py-1 bg-red-950/70 rounded-full">NIVEL 04 - RECUPERACIÓN</span>
-                        <h3 class="text-3xl font-extrabold text-white tracking-tight">Área de Relajación y Hidromasaje</h3>
+                        <h3 class="text-3xl font-extrabold text-white tracking-tight">Área de Relajación e Hidromasaje</h3>
                         <p class="text-slate-300 text-base leading-relaxed">Optimiza tu recuperación muscular tras el esfuerzo extremo con nuestras exclusivas tinas de hidromasaje y zona de descanso.</p>
                     </div>
                     <div class="md:w-1/2 bg-black/50 h-56 w-full rounded-2xl flex items-center justify-center border border-red-900/40 text-red-900/80 font-semibold">[Foto Tinas de Hidromasaje]</div>
@@ -163,10 +194,11 @@
                             <p class="text-slate-300 text-sm mb-6">Ideal para mantenerte en forma con acceso directo a lo esencial.</p>
                         </div>
                         <div>
-                            <button onclick="toggleDetails('detalles-estudiante')" class="w-full bg-black hover:bg-slate-900 border border-red-900/60 text-white font-bold py-3 rounded-xl transition text-sm mb-4">
-                                Ver Beneficios ▼
+                            <button onclick="toggleDetails('detalles-estudiante', this)" class="w-full bg-black hover:bg-slate-900 border border-red-900/60 text-white font-bold py-3 rounded-xl transition text-sm mb-4 flex justify-center items-center gap-2">
+                                <span>Ver Beneficios</span>
+                                <span class="transform transition-transform duration-300 arrow">▼</span>
                             </button>
-                            <div id="detalles-estudiante" class="hidden space-y-2 text-xs text-slate-300 pt-3 border-t border-slate-800">
+                            <div id="detalles-estudiante" class="details-content space-y-2 text-xs text-slate-300 mb-4 border-t border-slate-800 pt-2">
                                 <p>✔️ Acceso exclusivo a las 3 áreas principales (Superior, Inferior, Cardio)</p>
                                 <p>❌ No incluye clases ni hidromasaje</p>
                             </div>
@@ -184,10 +216,11 @@
                             <p class="text-slate-300 text-sm mb-6">Asesoría directa y disciplina especializada para romper tus límites.</p>
                         </div>
                         <div>
-                            <button onclick="toggleDetails('detalles-guerrero')" class="w-full bg-black hover:bg-slate-900 border border-red-900/60 text-white font-bold py-3 rounded-xl transition text-sm mb-4">
-                                Ver Beneficios ▼
+                            <button onclick="toggleDetails('detalles-guerrero', this)" class="w-full bg-black hover:bg-slate-900 border border-red-900/60 text-white font-bold py-3 rounded-xl transition text-sm mb-4 flex justify-center items-center gap-2">
+                                <span>Ver Beneficios</span>
+                                <span class="transform transition-transform duration-300 arrow">▼</span>
                             </button>
-                            <div id="detalles-guerrero" class="hidden space-y-2 text-xs text-slate-300 pt-3 border-t border-slate-800">
+                            <div id="detalles-guerrero" class="details-content space-y-2 text-xs text-slate-300 mb-4 border-t border-slate-800 pt-2">
                                 <p>✔️ Acceso a las 3 áreas de entrenamiento</p>
                                 <p>✔️ Asesoría nutricional personalizada</p>
                                 <p>✔️ Acceso a 1 disciplina de clases a elegir</p>
@@ -205,10 +238,11 @@
                             <p class="text-slate-300 text-sm mb-6">Acceso absoluto a toda la infraestructura, clases ilimitadas y recuperación.</p>
                         </div>
                         <div>
-                            <button onclick="toggleDetails('detalles-espartano')" class="w-full bg-black hover:bg-slate-900 border border-red-900/60 text-white font-bold py-3 rounded-xl transition text-sm mb-4">
-                                Ver Beneficios ▼
+                            <button onclick="toggleDetails('detalles-espartano', this)" class="w-full bg-black hover:bg-slate-900 border border-red-900/60 text-white font-bold py-3 rounded-xl transition text-sm mb-4 flex justify-center items-center gap-2">
+                                <span>Ver Beneficios</span>
+                                <span class="transform transition-transform duration-300 arrow">▼</span>
                             </button>
-                            <div id="detalles-espartano" class="hidden space-y-2 text-xs text-slate-300 pt-3 border-t border-slate-800">
+                            <div id="detalles-espartano" class="details-content space-y-2 text-xs text-slate-300 mb-4 border-t border-slate-800 pt-2">
                                 <p>✔️ Acceso ilimitado a las 3 áreas de entrenamiento</p>
                                 <p>✔️ Acceso a Tinas de Hidromasaje (Área de Relajación)</p>
                                 <p>✔️ Acceso libre a CUALQUIER clase disponible</p>
@@ -257,14 +291,39 @@
 
     </div>
 
-    <!-- SCRIPT INTERACTIVO PARA LOS PLANES -->
+    <!-- BOTÓN FLOTANTE RÁPIDO (CTA STICKY) -->
+    <a href="#planes" class="fixed bottom-6 right-6 z-40 bg-red-gym hover:bg-red-600 text-white font-black px-5 py-3 rounded-full shadow-2xl shadow-red-600/80 transition transform hover:scale-105 flex items-center gap-2 text-sm">
+        <span>🔥 ELEGIR PLAN</span>
+    </a>
+
+    <!-- SCRIPTS INTERACTIVOS -->
     <script>
-        function toggleDetails(id) {
+        // Control del menú hamburguesa en móviles
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Ocultar menú móvil al hacer clic en un enlace
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Control del acordeón de planes con animación suave
+        function toggleDetails(id, btn) {
             const element = document.getElementById(id);
-            if (element.classList.contains('hidden')) {
-                element.classList.remove('hidden');
+            const arrow = btn.querySelector('.arrow');
+            
+            element.classList.toggle('open');
+            
+            if (element.classList.contains('open')) {
+                arrow.style.transform = 'rotate(180deg)';
             } else {
-                element.classList.add('hidden');
+                arrow.style.transform = 'rotate(0deg)';
             }
         }
     </script>
