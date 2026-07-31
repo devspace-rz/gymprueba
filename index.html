@@ -3,57 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SHARK GYM - Rojo & Negro</title>
+    <title>SHARK GYM - La Bestia</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        /* Fondo negro absoluto para el body */
         body {
             margin: 0;
             padding: 0;
-            background-color: #000000; /* Fondo negro absoluto */
+            background-color: #000000;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
         }
 
-        .bg-fixed-shark {
-            /* Usamos contain para que la imagen se vea COMPLETA sin recortarse */
+        /* NUEVA CAPA DE FONDO DEDICADA */
+        .shark-background-layer {
+            position: fixed; /* Fija la imagen en la pantalla */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh; /* Altura completa de la ventana */
+            
+            /* Aquí está el truco: */
             background-image: url('shark.jpg');
-            background-size: 450px auto; /* Tamaño fijo controlado para que se aprecie la silueta completa */
-            background-position: center 120px; /* Centrado y un poco abajo del menú */
-            background-repeat: repeat; /* Se repite sutilmente tipo patrón de fondo estilo marca de agua */
-            background-attachment: fixed; /* Mantiene el fondo estático al hacer scroll */
-            position: relative;
+            background-size: contain; /* Muestra la imagen COMPLETA sin cortar ni estirar */
+            background-position: center center; /* Centrada perfectamente */
+            background-repeat: no-repeat;
+            
+            /* FUNDIDO SUAVE */
+            /* Esto crea una máscara que hace que la imagen se funda a negro en los bordes */
+            mask-image: radial-gradient(circle at center, black 40%, rgba(0,0,0,0.3) 90%, transparent 100%);
+            -webkit-mask-image: radial-gradient(circle at center, black 40%, rgba(0,0,0,0.3) 90%, transparent 100%);
+            
+            z-index: 0; /* Detrás de todo el contenido */
+            opacity: 0.8; /* Aumentamos la visibilidad de la imagen base */
         }
 
-        /* Capa oscura translúcida para que el contenido resalte pero el tiburón de fondo se alcance a ver completo */
-        .bg-fixed-shark::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-color: rgba(0, 0, 0, 0.92); /* 92% de oscuridad para máxima legibilidad */
-            pointer-events: none;
+        /* Capa oscura superpuesta al contenido para legibilidad */
+        .content-overlay {
+            position: relative;
             z-index: 1;
+            background-color: rgba(0, 0, 0, 0.75); /* Oscurecimiento general del contenido (más transparente que antes) */
+            min-height: 100vh;
         }
 
-        .content-wrapper {
-            position: relative;
-            z-index: 2;
-        }
-
+        /* Estilos de la paleta */
         .text-red-gym { color: #ef4444; }
         .bg-red-gym { background-color: #ef4444; }
         .hover-red-gym:hover { background-color: #dc2626; }
 
         .piso-card {
-            background-color: rgba(12, 12, 12, 0.95);
-            border: 1px solid #262626;
+            background-color: rgba(20, 20, 20, 0.9); /* Tarjetas un poco más oscuras que el contenido general para resaltar */
+            border: 1px solid #333;
         }
     </style>
 </head>
-<body class="bg-fixed-shark">
+<body>
 
-    <div class="content-wrapper min-h-screen flex flex-col justify-between text-slate-200">
+    <!-- 1. CAPA DE FONDO ARTÍSTICO (El tiburón grande, centrado y fijo) -->
+    <div class="shark-background-layer"></div>
+
+    <!-- 2. CONTENEDOR PRINCIPAL (Todo lo que está encima del fondo) -->
+    <div class="content-overlay flex flex-col justify-between text-slate-200">
 
         <!-- MENÚ DE NAVEGACIÓN -->
-        <header class="bg-black/90 backdrop-blur-md border-b border-red-900/40 sticky top-0 z-50">
+        <header class="bg-black/90 backdrop-blur-sm border-b border-red-900/60 sticky top-0 z-50">
             <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
                 <div class="flex items-center space-x-3">
                     <img src="shark.jpg" alt="Shark Gym Logo" class="w-10 h-10 object-contain rounded-full bg-black border border-red-900 p-0.5">
@@ -71,14 +84,14 @@
         <main class="flex-grow">
             <section class="py-32 px-4 text-center">
                 <div class="max-w-4xl mx-auto">
-                    <h1 class="text-5xl md:text-7xl font-extrabold tracking-tighter mb-5 uppercase text-white leading-tight drop-shadow-lg">
+                    <h1 class="text-5xl md:text-7xl font-extrabold tracking-tighter mb-5 uppercase text-white leading-tight drop-shadow-[0_5px_15px_rgba(239,68,68,0.5)]">
                         TRANSFORMA TU CUERPO, <br>
                         LIBERA TU <span class="text-red-gym">BESTIA</span>
                     </h1>
-                    <p class="text-slate-300 text-xl max-w-2xl mx-auto mb-10 font-light leading-relaxed">
+                    <p class="text-slate-200 text-xl max-w-2xl mx-auto mb-10 font-normal leading-relaxed drop-shadow-sm">
                         El gimnasio de élite diseñado para la intensidad. Tres niveles de equipamiento extremo listos para ponerte a prueba.
                     </p>
-                    <a href="#superior" class="inline-block bg-red-gym hover-red-gym text-white font-extrabold text-lg tracking-widest px-10 py-4 rounded-full shadow-2xl shadow-red-600/50 transition duration-300 transform hover:-translate-y-1">
+                    <a href="#superior" class="inline-block bg-red-gym hover-red-gym text-white font-extrabold text-lg tracking-widest px-10 py-4 rounded-full shadow-2xl shadow-red-600/70 transition duration-300 transform hover:-translate-y-1">
                         VER DISTRIBUCIÓN
                     </a>
                 </div>
@@ -88,9 +101,9 @@
             <section class="max-w-7xl mx-auto px-4 py-24 space-y-20">
                 
                 <!-- PISO 1 -->
-                <div id="superior" class="piso-card rounded-3xl p-8 md:p-16 flex flex-col md:flex-row items-center justify-between gap-12 transition duration-500 hover:border-red-900">
+                <div id="superior" class="piso-card rounded-3xl p-8 md:p-16 flex flex-col md:flex-row items-center justify-between gap-12 transition duration-500 hover:border-red-900 shadow-xl">
                     <div class="md:w-1/2 space-y-5">
-                        <span class="text-red-gym font-black tracking-widest text-xs uppercase px-3 py-1 bg-red-950/50 rounded-full">NIVEL 01</span>
+                        <span class="text-red-gym font-black tracking-widest text-xs uppercase px-3 py-1 bg-red-950/70 rounded-full">NIVEL 01</span>
                         <h2 class="text-4xl font-extrabold text-white tracking-tight">ÁREA DE TRONCO SUPERIOR</h2>
                         <p class="text-slate-300 text-base leading-relaxed">Dominada por la fuerza bruta. Zona equipada con bancos de competición, mancuernas de alto tonelaje y maquinaria de vanguardia para construir un torso de acero.</p>
                         <div class="flex flex-wrap gap-3 pt-3 text-xs font-medium text-slate-400">
@@ -99,15 +112,15 @@
                             <span class="bg-black px-3 py-1.5 rounded-lg border border-slate-800">Máquinas Convergentes</span>
                         </div>
                     </div>
-                    <div class="md:w-1/2 bg-black h-72 w-full rounded-2xl flex items-center justify-center border-2 border-dashed border-red-900/40 text-red-900 font-semibold">
+                    <div class="md:w-1/2 bg-black/50 h-72 w-full rounded-2xl flex items-center justify-center border-2 border-dashed border-red-900/60 text-red-900/80 font-semibold">
                         [GALERÍA PISO 1]
                     </div>
                 </div>
 
                 <!-- PISO 2 -->
-                <div id="inferior" class="piso-card rounded-3xl p-8 md:p-16 flex flex-col md:flex-row-reverse items-center justify-between gap-12 transition duration-500 hover:border-red-900">
+                <div id="inferior" class="piso-card rounded-3xl p-8 md:p-16 flex flex-col md:flex-row-reverse items-center justify-between gap-12 transition duration-500 hover:border-red-900 shadow-xl">
                     <div class="md:w-1/2 space-y-5">
-                        <span class="text-red-gym font-black tracking-widest text-xs uppercase px-3 py-1 bg-red-950/50 rounded-full">NIVEL 02</span>
+                        <span class="text-red-gym font-black tracking-widest text-xs uppercase px-3 py-1 bg-red-950/70 rounded-full">NIVEL 02</span>
                         <h2 class="text-4xl font-extrabold text-white tracking-tight">ÁREA DE TRONCO INFERIOR</h2>
                         <p class="text-slate-300 text-base leading-relaxed">La base de tu poder. Construye piernas explosivas y un núcleo inquebrantable. Maquinaria especializada para sentadilla, prensa y desarrollo femoral.</p>
                         <div class="flex flex-wrap gap-3 pt-3 text-xs font-medium text-slate-400">
@@ -116,15 +129,15 @@
                             <span class="bg-black px-3 py-1.5 rounded-lg border border-slate-800">Peso Muerto</span>
                         </div>
                     </div>
-                    <div class="md:w-1/2 bg-black h-72 w-full rounded-2xl flex items-center justify-center border-2 border-dashed border-red-900/40 text-red-900 font-semibold">
+                    <div class="md:w-1/2 bg-black/50 h-72 w-full rounded-2xl flex items-center justify-center border-2 border-dashed border-red-900/60 text-red-900/80 font-semibold">
                         [GALERÍA PISO 2]
                     </div>
                 </div>
 
                 <!-- PISO 3 -->
-                <div id="cardio" class="piso-card rounded-3xl p-8 md:p-16 flex flex-col md:flex-row items-center justify-between gap-12 transition duration-500 hover:border-red-900">
+                <div id="cardio" class="piso-card rounded-3xl p-8 md:p-16 flex flex-col md:flex-row items-center justify-between gap-12 transition duration-500 hover:border-red-900 shadow-xl">
                     <div class="md:w-1/2 space-y-5">
-                        <span class="text-red-gym font-black tracking-widest text-xs uppercase px-3 py-1 bg-red-950/50 rounded-full">NIVEL 03</span>
+                        <span class="text-red-gym font-black tracking-widest text-xs uppercase px-3 py-1 bg-red-950/70 rounded-full">NIVEL 03</span>
                         <h2 class="text-4xl font-extrabold text-white tracking-tight">ÁREA DE CARDIO DE ÉLITE</h2>
                         <p class="text-slate-300 text-base leading-relaxed">Potencia tu resistencia. Equipo de última generación para llevar tu capacidad cardiovascular al límite mientras dominas el entorno.</p>
                         <div class="flex flex-wrap gap-3 pt-3 text-xs font-medium text-slate-400">
@@ -133,7 +146,7 @@
                             <span class="bg-black px-3 py-1.5 rounded-lg border border-slate-800">Escaladoras</span>
                         </div>
                     </div>
-                    <div class="md:w-1/2 bg-black h-72 w-full rounded-2xl flex items-center justify-center border-2 border-dashed border-red-900/40 text-red-900 font-semibold">
+                    <div class="md:w-1/2 bg-black/50 h-72 w-full rounded-2xl flex items-center justify-center border-2 border-dashed border-red-900/60 text-red-900/80 font-semibold">
                         [GALERÍA PISO 3]
                     </div>
                 </div>
@@ -142,7 +155,7 @@
         </main>
 
         <!-- PIE DE PÁGINA -->
-        <footer class="bg-black border-t border-red-900/50 py-10 mt-20 text-center text-slate-600 text-xs tracking-wider">
+        <footer class="bg-black/90 border-t border-red-900/60 py-10 mt-20 text-center text-slate-500 text-xs tracking-widest">
             <p>&copy; 2026 SHARK GYM. LA FUERZA NO SE NEGOCIA.</p>
         </footer>
 
