@@ -3,111 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shark Gym - Distribución de Pisos</title>
-    <!-- Tailwind CSS para un diseño moderno y responsivo -->
+    <title>SHARK GYM - Rojo & Negro</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Estilo para asegurar que el fondo sea oscuro y elegante acorde a la temática */
+        /* Configuración del fondo estático */
         body {
-            background-color: #0f172a;
-            color: #f8fafc;
+            margin: 0;
+            padding: 0;
+            height: 100%;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .bg-fixed-shark {
+            /* Ruta de tu imagen (asegúrate de que se llame shark.jpg) */
+            background-image: url('shark.jpg');
+            background-size: cover; /* La imagen cubre todo */
+            background-position: center center; /* Centrada */
+            background-repeat: no-repeat; /* No se repite */
+            background-attachment: fixed; /* ESTO FIJA LA IMAGEN AL SCROLLEAR */
+            background-color: #000; /* Color de respaldo si la imagen no carga */
+            position: relative;
+        }
+
+        /* Capa semitransparente para que el texto sea legible sobre el tiburón */
+        .bg-fixed-shark::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(0, 0, 0, 0.85); /* Negro muy oscuro 85% opacidad */
+            z-index: 1;
+        }
+
+        /* Asegurar que el contenido esté por encima de la capa oscura */
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Estilos personalizados para la paleta Rojo/Negro */
+        .text-red-gym { color: #ef4444; } /* Rojo intenso Tailwind */
+        .bg-red-gym { background-color: #ef4444; }
+        .border-red-gym { border-color: #ef4444; }
+        .hover-red-gym:hover { background-color: #dc2626; } /* Un rojo un poco más oscuro al hover */
+
+        /* Estilos para los contenedores de piso con transparencia */
+        .piso-card {
+            background-color: rgba(20, 20, 20, 0.9); /* Negro casi puro semitransparente */
+            border: 1px solid #333;
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between">
+<body class="bg-fixed-shark">
 
-    <!-- MENÚ DE NAVEGACIÓN -->
-    <header class="bg-slate-900 border-b border-slate-800 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-3">
-                <!-- Imagen con proporción correcta y sin perder calidad usando object-contain -->
-                <img src="shark.jpg" alt="Shark Gym Logo" class="w-12 h-12 object-contain rounded-full bg-slate-800 p-1 border border-slate-700">
-                <span class="text-xl font-extrabold tracking-wider text-white">SHARK <span class="text-cyan-400">GYM</span></span>
+    <!-- CONTENEDOR PRINCIPAL -->
+    <div class="content-wrapper min-h-screen flex flex-col justify-between text-slate-200">
+
+        <!-- MENÚ DE NAVEGACIÓN (Modificado a Rojo/Negro) -->
+        <header class="bg-black border-b border-red-900/50 sticky top-0 z-50 shadow-2xl shadow-red-950/20">
+            <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <img src="shark.jpg" alt="Shark Gym Logo" class="w-10 h-10 object-contain rounded-full bg-black border border-red-900 p-0.5">
+                    <span class="text-xl font-black tracking-wider text-white">SHARK <span class="text-red-gym">GYM</span></span>
+                </div>
+                <nav class="hidden md:flex space-x-6 text-sm font-bold tracking-wide">
+                    <a href="#superior" class="hover:text-red-gym transition duration-300">TRONCO SUPERIOR</a>
+                    <a href="#inferior" class="hover:text-red-gym transition duration-300">TRONCO INFERIOR</a>
+                    <a href="#cardio" class="hover:text-red-gym transition duration-300">CARDIO</a>
+                </nav>
             </div>
-            <nav class="hidden md:flex space-x-6 text-sm font-semibold">
-                <a href="#superior" class="hover:text-cyan-400 transition">Piso 1: Tronco Superior</a>
-                <a href="#inferior" class="hover:text-cyan-400 transition">Piso 2: Tronco Inferior</a>
-                <a href="#cardio" class="hover:text-cyan-400 transition">Piso 3: Cardio</a>
-            </nav>
-        </div>
-    </header>
+        </header>
 
-    <!-- SECCIÓN PRINCIPAL / HERO CON LA IMAGEN DE FONDO -->
-    <main class="flex-grow">
-        <section class="relative bg-slate-950 py-20 px-4 text-center border-b border-slate-800 overflow-hidden">
-            <div class="max-w-4xl mx-auto relative z-10 flex flex-col items-center">
-                <!-- Contenedor estático para la imagen principal manteniendo su proporción original -->
-                <div class="w-64 h-64 md:w-80 md:h-80 mb-6 drop-shadow-[0_10px_20px_rgba(0,0,0,0.8)]">
-                    <img src="shark.jpg" alt="Shark Gym Tiburón" class="w-full h-full object-contain">
+        <!-- SECCIÓN PRINCIPAL (HERO) -->
+        <main class="flex-grow">
+            <section class="py-32 px-4 text-center">
+                <div class="max-w-4xl mx-auto">
+                    <h1 class="text-5xl md:text-7xl font-extrabold tracking-tighter mb-5 uppercase text-white leading-tight drop-shadow-lg">
+                        TRANSFORMA TU CUERPO, <br>
+                        LIBERA TU <span class="text-red-gym">BESTIA</span>
+                    </h1>
+                    <p class="text-slate-300 text-xl max-w-2xl mx-auto mb-10 font-light leading-relaxed">
+                        El gimnasio de élite diseñado para la intensidad. Tres niveles de equipamiento extremo listos para ponerte a prueba.
+                    </p>
+                    <a href="#superior" class="inline-block bg-red-gym hover-red-gym text-white font-extrabold text-lg tracking-widest px-10 py-4 rounded-full shadow-2xl shadow-red-600/50 transition duration-300 transform hover:-translate-y-1">
+                        VER DISTRIBUCIÓN
+                    </a>
                 </div>
-                <h1 class="text-4xl md:text-6xl font-black tracking-tight mb-4 uppercase">Domina Tu <span class="text-cyan-400">Entrenamiento</span></h1>
-                <p class="text-slate-400 text-lg max-w-xl mx-auto mb-8">Unidades especializadas de alto rendimiento distribuidas en 3 niveles diseñados para llevarte al siguiente nivel.</p>
-                <a href="#superior" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-8 py-3 rounded-lg shadow-lg transition duration-300">Explorar Pisos</a>
-            </div>
-        </section>
+            </section>
 
-        <!-- SECCIÓN DE LOS 3 PISOS -->
-        <section class="max-w-7xl mx-auto px-4 py-16 space-y-16">
-            
-            <!-- PISO 1 -->
-            <div id="superior" class="bg-slate-900 border border-slate-800 rounded-2xl p-8 md:p-12 shadow-xl flex flex-col md:flex-row items-center justify-between gap-8">
-                <div class="md:w-1/2 space-y-4">
-                    <span class="text-cyan-400 font-bold tracking-widest text-sm uppercase">Nivel 01</span>
-                    <h2 class="text-3xl font-bold">Área de Tronco Superior</h2>
-                    <p class="text-slate-400">Zona equipada con barras olímpicas, máquinas de poleas convergentes, press de banca y estaciones especializadas para pectoral, espalda, hombro y brazo.</p>
-                    <ul class="text-sm text-slate-300 space-y-2">
-                        <li>✔️ Bancos planos, inclinados y declinados</li>
-                        <li>✔️ Poleas de alta resistencia</li>
-                        <li>✔️ Mancuernas desde 5 hasta 100 lbs</li>
-                    </ul>
+            <!-- SECCIÓN DE LOS 3 PISOS -->
+            <section class="max-w-7xl mx-auto px-4 py-24 space-y-20">
+                
+                <!-- PISO 1: Tronco Superior -->
+                <div id="superior" class="piso-card rounded-3xl p-8 md:p-16 flex flex-col md:flex-row items-center justify-between gap-12 transition duration-500 hover:border-red-900">
+                    <div class="md:w-1/2 space-y-5">
+                        <span class="text-red-gym font-black tracking-widest text-xs uppercase px-3 py-1 bg-red-950/50 rounded-full">NIVEL 01</span>
+                        <h2 class="text-4xl font-extrabold text-white tracking-tight">ÁREA DE TRONCO SUPERIOR</h2>
+                        <p class="text-slate-300 text-base leading-relaxed">Dominada por la fuerza bruta. Zona equipada con bancos de competición, mancuernas de alto tonelaje y maquinaria de vanguardia para construir un torso de acero.</p>
+                        <div class="flex flex-wrap gap-3 pt-3 text-xs font-medium text-slate-400">
+                            <span class="bg-black px-3 py-1.5 rounded-lg border border-slate-800">Press Banca</span>
+                            <span class="bg-black px-3 py-1.5 rounded-lg border border-slate-800">Remo con Barra</span>
+                            <span class="bg-black px-3 py-1.5 rounded-lg border border-slate-800">Máquinas Convergentes</span>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 bg-black h-72 w-full rounded-2xl flex items-center justify-center border-2 border-dashed border-red-900/40 text-red-900 font-semibold">
+                        [GALERÍA PISO 1]
+                    </div>
                 </div>
-                <div class="md:w-1/2 bg-slate-950 h-64 w-full rounded-xl flex items-center justify-center border border-slate-800 text-slate-600 font-medium">
-                    [Espacio para Fotografía / Mockup Piso 1]
-                </div>
-            </div>
 
-            <!-- PISO 2 -->
-            <div id="inferior" class="bg-slate-900 border border-slate-800 rounded-2xl p-8 md:p-12 shadow-xl flex flex-col md:flex-row-reverse items-center justify-between gap-8">
-                <div class="md:w-1/2 space-y-4">
-                    <span class="text-cyan-400 font-bold tracking-widest text-sm uppercase">Nivel 02</span>
-                    <h2 class="text-3xl font-bold">Área de Tronco Inferior</h2>
-                    <p class="text-slate-400">Diseñado específicamente para el desarrollo de pierna, pantorrilla y fuerza de cadena posterior con maquinaria de última generación.</p>
-                    <ul class="text-sm text-slate-300 space-y-2">
-                        <li>✔️ Sentadilla libre y prensas inclinadas</li>
-                        <li>✔️ Máquinas de extensión y curl femoral</li>
-                        <li>✔️ Torres de pantorrilla y abductores</li>
-                    </ul>
+                <!-- PISO 2: Tronco Inferior -->
+                <div id="inferior" class="piso-card rounded-3xl p-8 md:p-16 flex flex-col md:flex-row-reverse items-center justify-between gap-12 transition duration-500 hover:border-red-900">
+                    <div class="md:w-1/2 space-y-5">
+                        <span class="text-red-gym font-black tracking-widest text-xs uppercase px-3 py-1 bg-red-950/50 rounded-full">NIVEL 02</span>
+                        <h2 class="text-4xl font-extrabold text-white tracking-tight">ÁREA DE TRONCO INFERIOR</h2>
+                        <p class="text-slate-300 text-base leading-relaxed">La base de tu poder. Construye piernas explosivas y un núcleo inquebrantable. Maquinaria especializada para sentadilla, prensa y desarrollo femoral.</p>
+                        <div class="flex flex-wrap gap-3 pt-3 text-xs font-medium text-slate-400">
+                            <span class="bg-black px-3 py-1.5 rounded-lg border border-slate-800">Prensa de Piernas</span>
+                            <span class="bg-black px-3 py-1.5 rounded-lg border border-slate-800">Hack Squat</span>
+                            <span class="bg-black px-3 py-1.5 rounded-lg border border-slate-800">Peso Muerto</span>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 bg-black h-72 w-full rounded-2xl flex items-center justify-center border-2 border-dashed border-red-900/40 text-red-900 font-semibold">
+                        [GALERÍA PISO 2]
+                    </div>
                 </div>
-                <div class="md:w-1/2 bg-slate-950 h-64 w-full rounded-xl flex items-center justify-center border border-slate-800 text-slate-600 font-medium">
-                    [Espacio para Fotografía / Mockup Piso 2]
-                </div>
-            </div>
 
-            <!-- PISO 3 -->
-            <div id="cardio" class="bg-slate-900 border border-slate-800 rounded-2xl p-8 md:p-12 shadow-xl flex flex-col md:flex-row items-center justify-between gap-8">
-                <div class="md:w-1/2 space-y-4">
-                    <span class="text-cyan-400 font-bold tracking-widest text-sm uppercase">Nivel 03</span>
-                    <h2 class="text-3xl font-bold">Área de Cardio</h2>
-                    <p class="text-slate-400">Espacio optimizado para la quema de grasa, resistencia aeróbica y acondicionamiento físico general con vista panorámica.</p>
-                    <ul class="text-sm text-slate-300 space-y-2">
-                        <li>✔️ Caminadoras profesionales con pantalla táctil</li>
-                        <li>✔️ Bicicletas estáticas y de spinning</li>
-                        <li>✔️ Escaladoras y elípticas de bajo impacto</li>
-                    </ul>
+                <!-- PISO 3: Cardio -->
+                <div id="cardio" class="piso-card rounded-3xl p-8 md:p-16 flex flex-col md:flex-row items-center justify-between gap-12 transition duration-500 hover:border-red-900">
+                    <div class="md:w-1/2 space-y-5">
+                        <span class="text-red-gym font-black tracking-widest text-xs uppercase px-3 py-1 bg-red-950/50 rounded-full">NIVEL 03</span>
+                        <h2 class="text-4xl font-extrabold text-white tracking-tight">ÁREA DE CARDIO DE ÉLITE</h2>
+                        <p class="text-slate-300 text-base leading-relaxed">Potencia tu resistencia. Equipo de última generación para llevar tu capacidad cardiovascular al límite mientras dominas el entorno.</p>
+                        <div class="flex flex-wrap gap-3 pt-3 text-xs font-medium text-slate-400">
+                            <span class="bg-black px-3 py-1.5 rounded-lg border border-slate-800">Caminadoras de Alta Velocidad</span>
+                            <span class="bg-black px-3 py-1.5 rounded-lg border border-slate-800">Bicicletas Estáticas</span>
+                            <span class="bg-black px-3 py-1.5 rounded-lg border border-slate-800">Escaladoras</span>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 bg-black h-72 w-full rounded-2xl flex items-center justify-center border-2 border-dashed border-red-900/40 text-red-900 font-semibold">
+                        [GALERÍA PISO 3]
+                    </div>
                 </div>
-                <div class="md:w-1/2 bg-slate-950 h-64 w-full rounded-xl flex items-center justify-center border border-slate-800 text-slate-600 font-medium">
-                    [Espacio para Fotografía / Mockup Piso 3]
-                </div>
-            </div>
 
-        </section>
-    </main>
+            </section>
+        </main>
 
-    <!-- PIE DE PÁGINA -->
-    <footer class="bg-slate-900 border-t border-slate-800 py-6 text-center text-slate-500 text-sm">
-        <p>&copy; 2026 Shark Gym. Diseñado para alto rendimiento.</p>
-    </footer>
+        <!-- PIE DE PÁGINA -->
+        <footer class="bg-black border-t border-red-900/50 py-10 mt-20 text-center text-slate-600 text-xs tracking-wider">
+            <p>&copy; 2026 SHARK GYM. LA FUERZA NO SE NEGOCIA.</p>
+        </footer>
+
+    </div>
 
 </body>
 </html>
