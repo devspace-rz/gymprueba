@@ -4,22 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SHARK GYM - Membresías y Distribución</title>
+    <!-- Importación de Google Fonts: Oswald y Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        heading: ['Oswald', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
     <style>
         body {
             margin: 0;
@@ -29,10 +18,11 @@
             overflow-x: hidden;
         }
 
-       
-        h1, h2, h3, h4, nav, .font-heading {
-            font-family: 'Oswald', sans-serif;
-            letter-spacing: 0.05em;
+        /* FUERZA BRUTA PARA TITULOS Y BOTONES CON OSWALD */
+        h1, h2, h3, h4, nav a, .plan-card h3, button, a.tracking-wider {
+            font-family: 'Oswald', sans-serif !important;
+            letter-spacing: 0.08em !important;
+            text-transform: uppercase;
         }
 
         .shark-background-layer {
@@ -88,22 +78,22 @@
 </head>
 <body>
 
-   
+    <!-- FONDO FIJO -->
     <div class="shark-background-layer"></div>
 
-
+    <!-- CONTENEDOR PRINCIPAL -->
     <div class="content-overlay flex flex-col justify-between text-slate-200">
 
-       
+        <!-- MENÚ DE NAVEGACIÓN -->
         <header class="bg-black/90 backdrop-blur-md border-b border-red-900/65 sticky top-0 z-50">
             <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
                 <div class="flex items-center space-x-3">
                     <img src="shark.jpg" alt="Shark Gym Logo" class="w-10 h-10 object-contain rounded-full bg-black border border-red-900 p-0.5">
-                    <span class="text-2xl font-bold tracking-wider text-white">SHARK <span class="text-red-gym">GYM</span></span>
+                    <span class="text-2xl font-bold text-white tracking-widest">SHARK <span class="text-red-gym">GYM</span></span>
                 </div>
                 
-               
-                <nav class="hidden md:flex space-x-6 text-base font-semibold tracking-wider items-center">
+                <!-- Menú Desktop -->
+                <nav class="hidden md:flex space-x-6 text-lg font-bold items-center">
                     <a href="#superior" class="hover:text-red-gym transition">SUPERIOR</a>
                     <a href="#inferior" class="hover:text-red-gym transition">INFERIOR</a>
                     <a href="#cardio" class="hover:text-red-gym transition">CARDIO</a>
@@ -111,7 +101,7 @@
                     <a href="#planes" class="bg-red-gym/20 border border-red-600 text-red-gym px-4 py-1.5 rounded-full hover:bg-red-gym hover:text-white transition">PLANES</a>
                 </nav>
 
-               
+                <!-- Botón Menú Hamburguesa (Móvil) -->
                 <button id="menu-btn" class="md:hidden text-white focus:outline-none p-2">
                     <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
@@ -119,172 +109,172 @@
                 </button>
             </div>
 
-           
-            <div id="mobile-menu" class="hidden md:hidden bg-black border-b border-red-900/50 px-4 pt-2 pb-6 space-y-3 font-semibold">
-                <a href="#superior" class="block text-base hover:text-red-gym transition py-1">SUPERIOR</a>
-                <a href="#inferior" class="block text-base hover:text-red-gym transition py-1">INFERIOR</a>
-                <a href="#cardio" class="block text-base hover:text-red-gym transition py-1">CARDIO</a>
-                <a href="#relajacion" class="block text-base hover:text-red-gym transition py-1">RELAJACIÓN</a>
-                <a href="#planes" class="block text-base text-red-gym hover:text-white transition py-1">PLANES</a>
+            <!-- Menú Desplegable Móvil -->
+            <div id="mobile-menu" class="hidden md:hidden bg-black border-b border-red-900/50 px-4 pt-2 pb-6 space-y-3 font-bold text-lg">
+                <a href="#superior" class="block hover:text-red-gym transition py-1">SUPERIOR</a>
+                <a href="#inferior" class="block hover:text-red-gym transition py-1">INFERIOR</a>
+                <a href="#cardio" class="block hover:text-red-gym transition py-1">CARDIO</a>
+                <a href="#relajacion" class="block hover:text-red-gym transition py-1">RELAJACIÓN</a>
+                <a href="#planes" class="block text-red-gym hover:text-white transition py-1">PLANES</a>
             </div>
         </header>
 
-       
+        <!-- SECCIÓN HERO -->
         <main class="flex-grow">
             <section class="py-32 px-4 text-center">
                 <div class="max-w-4xl mx-auto">
-                    <h1 class="text-5xl md:text-7xl font-bold tracking-wide mb-5 uppercase text-white leading-tight drop-shadow-[0_5px_15px_rgba(239,68,68,0.5)]">
+                    <h1 class="text-6xl md:text-8xl font-extrabold mb-5 text-white leading-none drop-shadow-[0_5px_15px_rgba(239,68,68,0.6)]">
                         TRANSFORMA TU CUERPO, <br>
                         LIBERA TU <span class="text-red-gym">BESTIA</span>
                     </h1>
-                    <p class="text-slate-300 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-light leading-relaxed">
+                    <p class="text-slate-300 text-lg md:text-2xl max-w-2xl mx-auto mb-10 font-light leading-relaxed" style="font-family: 'Inter', sans-serif !important; text-transform: none;">
                         Abierto de <strong class="text-white font-medium">6:00 AM a 10:00 PM</strong>. El gimnasio de élite diseñado para la intensidad y el rendimiento extremo.
                     </p>
-                    <a href="#planes" class="inline-block bg-red-gym hover-red-gym text-white font-bold text-lg tracking-widest px-10 py-4 rounded-full shadow-2xl shadow-red-600/70 transition duration-300 transform hover:-translate-y-1">
+                    <a href="#planes" class="inline-block bg-red-gym hover-red-gym text-white font-bold text-xl px-10 py-4 rounded-full shadow-2xl shadow-red-600/70 transition duration-300 transform hover:-translate-y-1">
                         VER PLANES Y COSTOS
                     </a>
                 </div>
             </section>
 
-            
+            <!-- SECCIÓN DE INSTALACIONES (PISOS) -->
             <section class="max-w-7xl mx-auto px-4 py-16 space-y-16">
                 <div class="text-center mb-12">
-                    <span class="text-red-gym font-bold uppercase tracking-widest text-sm">Infraestructura</span>
-                    <h2 class="text-4xl md:text-5xl font-bold text-white mt-2">NUESTROS NIVELES</h2>
+                    <span class="text-red-gym font-bold text-base">Infraestructura</span>
+                    <h2 class="text-4xl md:text-6xl font-extrabold text-white mt-2">NUESTROS NIVELES</h2>
                 </div>
                 
-               
+                <!-- Piso 1 -->
                 <div id="superior" class="piso-card rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-12">
-                    <div class="md:w-1/2 space-y-5">
-                        <span class="text-red-gym font-bold tracking-widest text-xs uppercase px-3 py-1 bg-red-950/70 rounded-full">NIVEL 01</span>
-                        <h3 class="text-3xl md:text-4xl font-bold text-white tracking-wide">Área de Tronco Superior</h3>
-                        <p class="text-slate-300 text-base leading-relaxed font-light">Zona equipada con bancos de competición, mancuernas de alto tonelaje y maquinaria especializada para torso.</p>
+                    <div class="md:w-1/2 space-y-4">
+                        <span class="text-red-gym font-bold text-sm px-3 py-1 bg-red-950/70 rounded-full inline-block">NIVEL 01</span>
+                        <h3 class="text-3xl md:text-5xl font-extrabold text-white">Área de Tronco Superior</h3>
+                        <p class="text-slate-300 text-base leading-relaxed font-light" style="font-family: 'Inter', sans-serif !important; text-transform: none;">Zona equipada con bancos de competición, mancuernas de alto tonelaje y maquinaria especializada para torso.</p>
                     </div>
-                    <div class="md:w-1/2 bg-black/50 h-56 w-full rounded-2xl flex items-center justify-center border border-red-900/40 text-red-900/80 font-semibold">[Foto Área Superior]</div>
+                    <div class="md:w-1/2 bg-black/50 h-56 w-full rounded-2xl flex items-center justify-center border border-red-900/40 text-red-900/80 font-bold text-lg">[Foto Área Superior]</div>
                 </div>
 
-                
+                <!-- Piso 2 -->
                 <div id="inferior" class="piso-card rounded-3xl p-8 md:p-12 flex flex-col md:flex-row-reverse items-center justify-between gap-12">
-                    <div class="md:w-1/2 space-y-5">
-                        <span class="text-red-gym font-bold tracking-widest text-xs uppercase px-3 py-1 bg-red-950/70 rounded-full">NIVEL 02</span>
-                        <h3 class="text-3xl md:text-4xl font-bold text-white tracking-wide">Área de Tronco Inferior</h3>
-                        <p class="text-slate-300 text-base leading-relaxed font-light">Construye piernas explosivas con maquinaria de punta para sentadilla, prensa y cadena posterior.</p>
+                    <div class="md:w-1/2 space-y-4">
+                        <span class="text-red-gym font-bold text-sm px-3 py-1 bg-red-950/70 rounded-full inline-block">NIVEL 02</span>
+                        <h3 class="text-3xl md:text-5xl font-extrabold text-white">Área de Tronco Inferior</h3>
+                        <p class="text-slate-300 text-base leading-relaxed font-light" style="font-family: 'Inter', sans-serif !important; text-transform: none;">Construye piernas explosivas con maquinaria de punta para sentadilla, prensa y cadena posterior.</p>
                     </div>
-                    <div class="md:w-1/2 bg-black/50 h-56 w-full rounded-2xl flex items-center justify-center border border-red-900/40 text-red-900/80 font-semibold">[Foto Área Inferior]</div>
+                    <div class="md:w-1/2 bg-black/50 h-56 w-full rounded-2xl flex items-center justify-center border border-red-900/40 text-red-900/80 font-bold text-lg">[Foto Área Inferior]</div>
                 </div>
 
-               
+                <!-- Piso 3 -->
                 <div id="cardio" class="piso-card rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-12">
-                    <div class="md:w-1/2 space-y-5">
-                        <span class="text-red-gym font-bold tracking-widest text-xs uppercase px-3 py-1 bg-red-950/70 rounded-full">NIVEL 03</span>
-                        <h3 class="text-3xl md:text-4xl font-bold text-white tracking-wide">Área de Cardio</h3>
-                        <p class="text-slate-300 text-base leading-relaxed font-light">Resistencia aeróbica y quema de grasa optimizada con caminadoras, bicicletas y escaladoras avanzadas.</p>
+                    <div class="md:w-1/2 space-y-4">
+                        <span class="text-red-gym font-bold text-sm px-3 py-1 bg-red-950/70 rounded-full inline-block">NIVEL 03</span>
+                        <h3 class="text-3xl md:text-5xl font-extrabold text-white">Área de Cardio</h3>
+                        <p class="text-slate-300 text-base leading-relaxed font-light" style="font-family: 'Inter', sans-serif !important; text-transform: none;">Resistencia aeróbica y quema de grasa optimizada con caminadoras, bicicletas y escaladoras avanzadas.</p>
                     </div>
-                    <div class="md:w-1/2 bg-black/50 h-56 w-full rounded-2xl flex items-center justify-center border border-red-900/40 text-red-900/80 font-semibold">[Foto Área Cardio]</div>
+                    <div class="md:w-1/2 bg-black/50 h-56 w-full rounded-2xl flex items-center justify-center border border-red-900/40 text-red-900/80 font-bold text-lg">[Foto Área Cardio]</div>
                 </div>
 
-               
+                <!-- Piso 4: Relajación -->
                 <div id="relajacion" class="piso-card rounded-3xl p-8 md:p-12 flex flex-col md:flex-row-reverse items-center justify-between gap-12">
-                    <div class="md:w-1/2 space-y-5">
-                        <span class="text-red-gym font-bold tracking-widest text-xs uppercase px-3 py-1 bg-red-950/70 rounded-full">NIVEL 04 - RECUPERACIÓN</span>
-                        <h3 class="text-3xl md:text-4xl font-bold text-white tracking-wide">Área de Relajación e Hidromasaje</h3>
-                        <p class="text-slate-300 text-base leading-relaxed font-light">Optimiza tu recuperación muscular tras el esfuerzo extremo con nuestras exclusivas tinas de hidromasaje y zona de descanso.</p>
+                    <div class="md:w-1/2 space-y-4">
+                        <span class="text-red-gym font-bold text-sm px-3 py-1 bg-red-950/70 rounded-full inline-block">NIVEL 04 - RECUPERACIÓN</span>
+                        <h3 class="text-3xl md:text-5xl font-extrabold text-white">Área de Relajación e Hidromasaje</h3>
+                        <p class="text-slate-300 text-base leading-relaxed font-light" style="font-family: 'Inter', sans-serif !important; text-transform: none;">Optimiza tu recuperación muscular tras el esfuerzo extremo con nuestras exclusivas tinas de hidromasaje y zona de descanso.</p>
                     </div>
-                    <div class="md:w-1/2 bg-black/50 h-56 w-full rounded-2xl flex items-center justify-center border border-red-900/40 text-red-900/80 font-semibold">[Foto Tinas de Hidromasaje]</div>
+                    <div class="md:w-1/2 bg-black/50 h-56 w-full rounded-2xl flex items-center justify-center border border-red-900/40 text-red-900/80 font-bold text-lg">[Foto Tinas de Hidromasaje]</div>
                 </div>
             </section>
 
-          
+            <!-- SECCIÓN DE PLANES Y CLASES -->
             <section id="planes" class="max-w-7xl mx-auto px-4 py-24">
                 <div class="text-center mb-16">
-                    <span class="text-red-gym font-bold uppercase tracking-widest text-sm">Membresías</span>
-                    <h2 class="text-4xl md:text-6xl font-bold text-white mt-2">ELIGE TU NIVEL DE COMPROMISO</h2>
-                    <p class="text-slate-400 mt-3 max-w-xl mx-auto font-light">Haz clic en <strong class="text-white font-medium">"Ver Beneficios"</strong> en cada plan y selecciona el botón de inscripción para contactar por WhatsApp.</p>
+                    <span class="text-red-gym font-bold text-base">Membresías</span>
+                    <h2 class="text-4xl md:text-6xl font-extrabold text-white mt-2">ELIGE TU NIVEL DE COMPROMISO</h2>
+                    <p class="text-slate-400 mt-3 max-w-xl mx-auto font-light" style="font-family: 'Inter', sans-serif !important; text-transform: none;">Haz clic en <strong class="text-white font-medium">"Ver Beneficios"</strong> en cada plan y selecciona el botón de inscripción para contactar por WhatsApp.</p>
                 </div>
 
-                
+                <!-- GRID DE PLANES -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
                     
-                   
+                    <!-- PLAN ESTUDIANTE -->
                     <div class="plan-card rounded-3xl p-8 flex flex-col justify-between relative shadow-xl">
                         <div>
-                            <span class="text-xs font-bold uppercase text-slate-400 tracking-wider">Básico</span>
-                            <h3 class="text-3xl font-bold text-white mt-1 mb-4">PLAN ESTUDIANTE</h3>
-                            <div class="text-3xl font-bold text-red-gym mb-6">$XXX <span class="text-xs text-slate-400 font-normal">/ mes</span></div>
-                            <p class="text-slate-300 text-sm mb-6 font-light">Ideal para mantenerte en forma con acceso directo a lo esencial.</p>
+                            <span class="text-xs font-bold text-slate-400">Básico</span>
+                            <h3 class="text-3xl font-extrabold text-white mt-1 mb-2">PLAN ESTUDIANTE</h3>
+                            <div class="text-3xl font-extrabold text-red-gym mb-4">$XXX <span class="text-xs text-slate-400 font-normal">/ mes</span></div>
+                            <p class="text-slate-300 text-sm mb-6 font-light" style="font-family: 'Inter', sans-serif !important; text-transform: none;">Ideal para mantenerte en forma con acceso directo a lo esencial.</p>
                         </div>
                         <div>
-                            <button onclick="toggleDetails('detalles-estudiante', this)" class="w-full bg-black hover:bg-slate-900 border border-red-900/60 text-white font-semibold py-3 rounded-xl transition text-sm mb-4 flex justify-center items-center gap-2">
+                            <button onclick="toggleDetails('detalles-estudiante', this)" class="w-full bg-black hover:bg-slate-900 border border-red-900/60 text-white font-bold py-3 rounded-xl transition text-sm mb-4 flex justify-center items-center gap-2">
                                 <span>Ver Beneficios</span>
                                 <span class="transform transition-transform duration-300 arrow">▼</span>
                             </button>
-                            <div id="detalles-estudiante" class="details-content space-y-2 text-xs text-slate-300 mb-4 border-t border-slate-800 pt-2 font-light">
+                            <div id="detalles-estudiante" class="details-content space-y-2 text-xs text-slate-300 mb-4 border-t border-slate-800 pt-2 font-light" style="font-family: 'Inter', sans-serif !important; text-transform: none;">
                                 <p>✔️ Acceso exclusivo a las 3 áreas principales (Superior, Inferior, Cardio)</p>
                                 <p>❌ No incluye clases ni hidromasaje</p>
                             </div>
-                            <a href="https://wa.me/5214776118428?text=Hola,%20me%20interesa%20inscribirme%20al%20Plan%20Estudiante%20de%20Shark%20Gym.%20¿Cuáles%20son%20los%20pasos%20para%20pagar%20y%20activarlo?" target="_blank" class="block text-center bg-red-gym hover-red-gym text-white font-bold py-3 rounded-xl transition text-sm shadow-lg shadow-red-600/30 tracking-wider">¡QUIERO ESTE PLAN!</a>
+                            <a href="https://wa.me/5214776118428?text=Hola,%20me%20interesa%20inscribirme%20al%20Plan%20Estudiante%20de%20Shark%20Gym.%20¿Cuáles%20son%20los%20pasos%20para%20pagar%20y%20activarlo?" target="_blank" class="block text-center bg-red-gym hover-red-gym text-white font-extrabold py-3 rounded-xl transition text-base shadow-lg shadow-red-600/30">¡QUIERO ESTE PLAN!</a>
                         </div>
                     </div>
 
-                   
+                    <!-- PLAN GUERRERO -->
                     <div class="plan-card rounded-3xl p-8 flex flex-col justify-between relative shadow-2xl border-red-600/50">
-                        <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-red-gym text-white text-xs font-bold uppercase px-4 py-1 rounded-full tracking-wider">Más Popular</div>
+                        <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-red-gym text-white text-xs font-black px-4 py-1 rounded-full">Más Popular</div>
                         <div>
-                            <span class="text-xs font-bold uppercase text-red-gym tracking-wider">Intermedio</span>
-                            <h3 class="text-3xl font-bold text-white mt-1 mb-4">PLAN GUERRERO</h3>
-                            <div class="text-3xl font-bold text-red-gym mb-6">$XXX <span class="text-xs text-slate-400 font-normal">/ mes</span></div>
-                            <p class="text-slate-300 text-sm mb-6 font-light">Asesoría directa y disciplina especializada para romper tus límites.</p>
+                            <span class="text-xs font-bold text-red-gym">Intermedio</span>
+                            <h3 class="text-3xl font-extrabold text-white mt-1 mb-2">PLAN GUERRERO</h3>
+                            <div class="text-3xl font-extrabold text-red-gym mb-4">$XXX <span class="text-xs text-slate-400 font-normal">/ mes</span></div>
+                            <p class="text-slate-300 text-sm mb-6 font-light" style="font-family: 'Inter', sans-serif !important; text-transform: none;">Asesoría directa y disciplina especializada para romper tus límites.</p>
                         </div>
                         <div>
-                            <button onclick="toggleDetails('detalles-guerrero', this)" class="w-full bg-black hover:bg-slate-900 border border-red-900/60 text-white font-semibold py-3 rounded-xl transition text-sm mb-4 flex justify-center items-center gap-2">
+                            <button onclick="toggleDetails('detalles-guerrero', this)" class="w-full bg-black hover:bg-slate-900 border border-red-900/60 text-white font-bold py-3 rounded-xl transition text-sm mb-4 flex justify-center items-center gap-2">
                                 <span>Ver Beneficios</span>
                                 <span class="transform transition-transform duration-300 arrow">▼</span>
                             </button>
-                            <div id="detalles-guerrero" class="details-content space-y-2 text-xs text-slate-300 mb-4 border-t border-slate-800 pt-2 font-light">
+                            <div id="detalles-guerrero" class="details-content space-y-2 text-xs text-slate-300 mb-4 border-t border-slate-800 pt-2 font-light" style="font-family: 'Inter', sans-serif !important; text-transform: none;">
                                 <p>✔️ Acceso a las 3 áreas de entrenamiento</p>
                                 <p>✔️ Asesoría nutricional personalizada</p>
                                 <p>✔️ Acceso a 1 disciplina de clases a elegir</p>
                             </div>
-                            <a href="https://wa.me/5214776118428?text=Hola,%20me%20interesa%20inscribirme%20al%20Plan%20Guerrero%20de%20Shark%20Gym.%20¿Cuáles%20son%20los%20pasos%20para%20pagar%20y%20activarlo?" target="_blank" class="block text-center bg-red-gym hover-red-gym text-white font-bold py-3 rounded-xl transition text-sm shadow-lg shadow-red-600/30 tracking-wider">¡QUIERO ESTE PLAN!</a>
+                            <a href="https://wa.me/5214776118428?text=Hola,%20me%20interesa%20inscribirme%20al%20Plan%20Guerrero%20de%20Shark%20Gym.%20¿Cuáles%20son%20los%20pasos%20para%20pagar%20y%20activarlo?" target="_blank" class="block text-center bg-red-gym hover-red-gym text-white font-extrabold py-3 rounded-xl transition text-base shadow-lg shadow-red-600/30">¡QUIERO ESTE PLAN!</a>
                         </div>
                     </div>
 
-                   
+                    <!-- PLAN ESPARTANO -->
                     <div class="plan-card rounded-3xl p-8 flex flex-col justify-between relative shadow-xl">
                         <div>
-                            <span class="text-xs font-bold uppercase text-amber-500 tracking-wider">Élite Total</span>
-                            <h3 class="text-3xl font-bold text-white mt-1 mb-4">PLAN ESPARTANO</h3>
-                            <div class="text-3xl font-bold text-red-gym mb-6">$XXX <span class="text-xs text-slate-400 font-normal">/ mes</span></div>
-                            <p class="text-slate-300 text-sm mb-6 font-light">Acceso absoluto a toda la infraestructura, clases ilimitadas y recuperación.</p>
+                            <span class="text-xs font-bold text-amber-500">Élite Total</span>
+                            <h3 class="text-3xl font-extrabold text-white mt-1 mb-2">PLAN ESPARTANO</h3>
+                            <div class="text-3xl font-extrabold text-red-gym mb-4">$XXX <span class="text-xs text-slate-400 font-normal">/ mes</span></div>
+                            <p class="text-slate-300 text-sm mb-6 font-light" style="font-family: 'Inter', sans-serif !important; text-transform: none;">Acceso absoluto a toda la infraestructura, clases ilimitadas y recuperación.</p>
                         </div>
                         <div>
-                            <button onclick="toggleDetails('detalles-espartano', this)" class="w-full bg-black hover:bg-slate-900 border border-red-900/60 text-white font-semibold py-3 rounded-xl transition text-sm mb-4 flex justify-center items-center gap-2">
+                            <button onclick="toggleDetails('detalles-espartano', this)" class="w-full bg-black hover:bg-slate-900 border border-red-900/60 text-white font-bold py-3 rounded-xl transition text-sm mb-4 flex justify-center items-center gap-2">
                                 <span>Ver Beneficios</span>
                                 <span class="transform transition-transform duration-300 arrow">▼</span>
                             </button>
-                            <div id="detalles-espartano" class="details-content space-y-2 text-xs text-slate-300 mb-4 border-t border-slate-800 pt-2 font-light">
+                            <div id="detalles-espartano" class="details-content space-y-2 text-xs text-slate-300 mb-4 border-t border-slate-800 pt-2 font-light" style="font-family: 'Inter', sans-serif !important; text-transform: none;">
                                 <p>✔️ Acceso ilimitado a las 3 áreas de entrenamiento</p>
                                 <p>✔️ Acceso a Tinas de Hidromasaje (Área de Relajación)</p>
                                 <p>✔️ Acceso libre a CUALQUIER clase disponible</p>
                             </div>
-                            <a href="https://wa.me/5214776118428?text=Hola,%20me%20interesa%20inscribirme%20al%20Plan%20Espartano%20de%20Shark%20Gym.%20¿Cuáles%20son%20los%20pasos%20para%20pagar%20y%20activarlo?" target="_blank" class="block text-center bg-red-gym hover-red-gym text-white font-bold py-3 rounded-xl transition text-sm shadow-lg shadow-red-600/30 tracking-wider">¡QUIERO ESTE PLAN!</a>
+                            <a href="https://wa.me/5214776118428?text=Hola,%20me%20interesa%20inscribirme%20al%20Plan%20Espartano%20de%20Shark%20Gym.%20¿Cuáles%20son%20los%20pasos%20para%20pagar%20y%20activarlo?" target="_blank" class="block text-center bg-red-gym hover-red-gym text-white font-extrabold py-3 rounded-xl transition text-base shadow-lg shadow-red-600/30">¡QUIERO ESTE PLAN!</a>
                         </div>
                     </div>
 
                 </div>
 
-               
+                <!-- SECCIÓN DE CLASES ESPECIALES -->
                 <div class="piso-card rounded-3xl p-8 md:p-12">
                     <div class="text-center mb-8">
-                        <h3 class="text-3xl md:text-4xl font-bold text-white">DISCIPLINAS Y CLASES ESPECIALES</h3>
-                        <p class="text-slate-400 text-sm mt-2 font-light">Horario de clases: <strong class="text-red-gym font-medium">10:00 AM a 5:00 PM</strong></p>
+                        <h3 class="text-3xl md:text-5xl font-extrabold text-white">DISCIPLINAS Y CLASES ESPECIALES</h3>
+                        <p class="text-slate-400 text-sm mt-2 font-light" style="font-family: 'Inter', sans-serif !important; text-transform: none;">Horario de clases: <strong class="text-red-gym font-medium">10:00 AM a 5:00 PM</strong></p>
                     </div>
                     <div class="grid grid-cols-2 md:grid-cols-5 gap-4 text-center">
-                        <div class="bg-black/60 border border-slate-800 p-4 rounded-2xl"><span class="block font-bold text-lg text-white tracking-wide">Box</span><span class="text-xs text-slate-400 font-light">10:00 - 17:00 hrs</span></div>
-                        <div class="bg-black/60 border border-slate-800 p-4 rounded-2xl"><span class="block font-bold text-lg text-white tracking-wide">Tae-kwondo</span><span class="text-xs text-slate-400 font-light">10:00 - 17:00 hrs</span></div>
-                        <div class="bg-black/60 border border-slate-800 p-4 rounded-2xl"><span class="block font-bold text-lg text-white tracking-wide">Calistenia</span><span class="text-xs text-slate-400 font-light">10:00 - 17:00 hrs</span></div>
-                        <div class="bg-black/60 border border-slate-800 p-4 rounded-2xl"><span class="block font-bold text-lg text-white tracking-wide">Gimnasia</span><span class="text-xs text-slate-400 font-light">10:00 - 17:00 hrs</span></div>
-                        <div class="bg-black/60 border border-slate-800 p-4 rounded-2xl col-span-2 md:col-span-1"><span class="block font-bold text-lg text-white tracking-wide">Natación</span><span class="text-xs text-slate-400 font-light">10:00 - 17:00 hrs</span></div>
+                        <div class="bg-black/60 border border-slate-800 p-4 rounded-2xl"><span class="block font-bold text-xl text-white">Box</span><span class="text-xs text-slate-400 font-light" style="font-family: 'Inter', sans-serif !important; text-transform: none;">10:00 - 17:00 hrs</span></div>
+                        <div class="bg-black/60 border border-slate-800 p-4 rounded-2xl"><span class="block font-bold text-xl text-white">Tae-kwondo</span><span class="text-xs text-slate-400 font-light" style="font-family: 'Inter', sans-serif !important; text-transform: none;">10:00 - 17:00 hrs</span></div>
+                        <div class="bg-black/60 border border-slate-800 p-4 rounded-2xl"><span class="block font-bold text-xl text-white">Calistenia</span><span class="text-xs text-slate-400 font-light" style="font-family: 'Inter', sans-serif !important; text-transform: none;">10:00 - 17:00 hrs</span></div>
+                        <div class="bg-black/60 border border-slate-800 p-4 rounded-2xl"><span class="block font-bold text-xl text-white">Gimnasia</span><span class="text-xs text-slate-400 font-light" style="font-family: 'Inter', sans-serif !important; text-transform: none;">10:00 - 17:00 hrs</span></div>
+                        <div class="bg-black/60 border border-slate-800 p-4 rounded-2xl col-span-2 md:col-span-1"><span class="block font-bold text-xl text-white">Natación</span><span class="text-xs text-slate-400 font-light" style="font-family: 'Inter', sans-serif !important; text-transform: none;">10:00 - 17:00 hrs</span></div>
                     </div>
                 </div>
 
@@ -296,14 +286,14 @@
             <div class="max-w-7xl mx-auto space-y-6">
                 <div>
                     <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-2">Términos y Condiciones</h4>
-                    <p class="leading-relaxed text-slate-400 font-light">
+                    <p class="leading-relaxed text-slate-400 font-light" style="font-family: 'Inter', sans-serif !important; text-transform: none;">
                         1. El acceso al gimnasio está sujeto al cumplimiento del reglamento interno y uso obligatorio de toalla.<br>
                         2. Los horarios generales de operación son de lunes a domingo de 6:00 AM a 10:00 PM. Las clases especiales se imparten de 10:00 AM a 5:00 PM según disponibilidad del instructor y reservación previa en recepción.<br>
                         3. Las membresías son personales e intransferibles. El uso de las tinas de hidromasaje del área de relajación requiere ducha previa y respeto a las normas de seguridad e higiene establecidas por el establecimiento. El pago de las mensualidades se realiza directamente en recepción o por transferencia autorizada.
                     </p>
                 </div>
                 <div class="border-t border-slate-900 pt-6 flex flex-col md:flex-row justify-between items-center font-light">
-                    <p>&copy; 2026 SHARK GYM. TODOS LOS DERECHOS RESERVADOS.</p>
+                    <p style="font-family: 'Inter', sans-serif !important; text-transform: none;">&copy; 2026 SHARK GYM. TODOS LOS DERECHOS RESERVADOS.</p>
                     <p class="text-red-gym font-bold tracking-widest mt-2 md:mt-0">LA FUERZA NO SE NEGOCIA.</p>
                 </div>
             </div>
@@ -311,14 +301,13 @@
 
     </div>
 
-   
-    <a href="#planes" class="fixed bottom-6 right-6 z-40 bg-red-gym hover:bg-red-600 text-white font-bold px-5 py-3 rounded-full shadow-2xl shadow-red-600/80 transition transform hover:scale-105 flex items-center gap-2 text-sm tracking-wider">
-        <span>🔥 ELEGIR PLAN</span>
+    <!-- BOTÓN FLOTANTE RÁPIDO (CTA STICKY) -->
+    <a href="#planes" class="fixed bottom-6 right-6 z-40 bg-red-gym hover:bg-red-600 text-white font-extrabold px-6 py-3.5 rounded-full shadow-2xl shadow-red-600/80 transition transform hover:scale-105 flex items-center gap-2 text-base">
+        <span> ELEGIR PLAN</span>
     </a>
 
- 
+    <!-- SCRIPTS INTERACTIVOS -->
     <script>
-        
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
 
@@ -326,7 +315,6 @@
             mobileMenu.classList.toggle('hidden');
         });
 
-       
         mobileMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
