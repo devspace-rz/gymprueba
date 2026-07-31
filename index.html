@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SHARK GYM - La Bestia</title>
+    <title>SHARK GYM - Membresías y Distribución</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Fondo negro absoluto para el body */
         body {
             margin: 0;
             padding: 0;
@@ -15,54 +14,51 @@
             overflow-x: hidden;
         }
 
-        /* NUEVA CAPA DE FONDO DEDICADA */
         .shark-background-layer {
-            position: fixed; /* Fija la imagen en la pantalla */
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100vh; /* Altura completa de la ventana */
-            
-            /* Aquí está el truco: */
+            height: 100vh;
             background-image: url('shark.jpg');
-            background-size: contain; /* Muestra la imagen COMPLETA sin cortar ni estirar */
-            background-position: center center; /* Centrada perfectamente */
+            background-size: contain;
+            background-position: center center;
             background-repeat: no-repeat;
-            
-            /* FUNDIDO SUAVE */
-            /* Esto crea una máscara que hace que la imagen se funda a negro en los bordes */
             mask-image: radial-gradient(circle at center, black 40%, rgba(0,0,0,0.3) 90%, transparent 100%);
             -webkit-mask-image: radial-gradient(circle at center, black 40%, rgba(0,0,0,0.3) 90%, transparent 100%);
-            
-            z-index: 0; /* Detrás de todo el contenido */
-            opacity: 0.8; /* Aumentamos la visibilidad de la imagen base */
+            z-index: 0;
+            opacity: 0.8;
         }
 
-        /* Capa oscura superpuesta al contenido para legibilidad */
         .content-overlay {
             position: relative;
             z-index: 1;
-            background-color: rgba(0, 0, 0, 0.75); /* Oscurecimiento general del contenido (más transparente que antes) */
+            background-color: rgba(0, 0, 0, 0.78);
             min-height: 100vh;
         }
 
-        /* Estilos de la paleta */
         .text-red-gym { color: #ef4444; }
         .bg-red-gym { background-color: #ef4444; }
         .hover-red-gym:hover { background-color: #dc2626; }
 
-        .piso-card {
-            background-color: rgba(20, 20, 20, 0.9); /* Tarjetas un poco más oscuras que el contenido general para resaltar */
+        .piso-card, .plan-card {
+            background-color: rgba(20, 20, 20, 0.92);
             border: 1px solid #333;
+            transition: all 0.3s ease;
+        }
+
+        .plan-card:hover {
+            border-color: #ef4444;
+            transform: translateY(-5px);
         }
     </style>
 </head>
 <body>
 
-    <!-- 1. CAPA DE FONDO ARTÍSTICO (El tiburón grande, centrado y fijo) -->
+    <!-- FONDO FIJO -->
     <div class="shark-background-layer"></div>
 
-    <!-- 2. CONTENEDOR PRINCIPAL (Todo lo que está encima del fondo) -->
+    <!-- CONTENEDOR PRINCIPAL -->
     <div class="content-overlay flex flex-col justify-between text-slate-200">
 
         <!-- MENÚ DE NAVEGACIÓN -->
@@ -73,14 +69,16 @@
                     <span class="text-xl font-black tracking-wider text-white">SHARK <span class="text-red-gym">GYM</span></span>
                 </div>
                 <nav class="hidden md:flex space-x-6 text-sm font-bold tracking-wide">
-                    <a href="#superior" class="hover:text-red-gym transition duration-300">TRONCO SUPERIOR</a>
-                    <a href="#inferior" class="hover:text-red-gym transition duration-300">TRONCO INFERIOR</a>
-                    <a href="#cardio" class="hover:text-red-gym transition duration-300">CARDIO</a>
+                    <a href="#superior" class="hover:text-red-gym transition">SUPERIOR</a>
+                    <a href="#inferior" class="hover:text-red-gym transition">INFERIOR</a>
+                    <a href="#cardio" class="hover:text-red-gym transition">CARDIO</a>
+                    <a href="#relajacion" class="hover:text-red-gym transition">RELAJACIÓN</a>
+                    <a href="#planes" class="text-red-gym hover:text-white transition">PLANES</a>
                 </nav>
             </div>
         </header>
 
-        <!-- SECCIÓN PRINCIPAL (HERO) -->
+        <!-- SECCIÓN HERO -->
         <main class="flex-grow">
             <section class="py-32 px-4 text-center">
                 <div class="max-w-4xl mx-auto">
@@ -88,78 +86,187 @@
                         TRANSFORMA TU CUERPO, <br>
                         LIBERA TU <span class="text-red-gym">BESTIA</span>
                     </h1>
-                    <p class="text-slate-200 text-xl max-w-2xl mx-auto mb-10 font-normal leading-relaxed drop-shadow-sm">
-                        El gimnasio de élite diseñado para la intensidad. Tres niveles de equipamiento extremo listos para ponerte a prueba.
+                    <p class="text-slate-200 text-xl max-w-2xl mx-auto mb-10 font-normal leading-relaxed">
+                        Abierto de <strong class="text-white">6:00 AM a 10:00 PM</strong>. El gimnasio de élite diseñado para la intensidad y el rendimiento extremo.
                     </p>
-                    <a href="#superior" class="inline-block bg-red-gym hover-red-gym text-white font-extrabold text-lg tracking-widest px-10 py-4 rounded-full shadow-2xl shadow-red-600/70 transition duration-300 transform hover:-translate-y-1">
-                        VER DISTRIBUCIÓN
+                    <a href="#planes" class="inline-block bg-red-gym hover-red-gym text-white font-extrabold text-lg tracking-widest px-10 py-4 rounded-full shadow-2xl shadow-red-600/70 transition duration-300 transform hover:-translate-y-1">
+                        VER PLANES Y COSTOS
                     </a>
                 </div>
             </section>
 
-            <!-- SECCIÓN DE LOS 3 PISOS -->
-            <section class="max-w-7xl mx-auto px-4 py-24 space-y-20">
+            <!-- SECCIÓN DE INSTALACIONES (PISOS) -->
+            <section class="max-w-7xl mx-auto px-4 py-16 space-y-16">
+                <div class="text-center mb-12">
+                    <span class="text-red-gym font-bold uppercase tracking-widest text-sm">Infraestructura</span>
+                    <h2 class="text-3xl md:text-5xl font-black text-white mt-2">NUESTROS NIVELES</h2>
+                </div>
                 
-                <!-- PISO 1 -->
-                <div id="superior" class="piso-card rounded-3xl p-8 md:p-16 flex flex-col md:flex-row items-center justify-between gap-12 transition duration-500 hover:border-red-900 shadow-xl">
+                <!-- Piso 1 -->
+                <div id="superior" class="piso-card rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-12">
                     <div class="md:w-1/2 space-y-5">
                         <span class="text-red-gym font-black tracking-widest text-xs uppercase px-3 py-1 bg-red-950/70 rounded-full">NIVEL 01</span>
-                        <h2 class="text-4xl font-extrabold text-white tracking-tight">ÁREA DE TRONCO SUPERIOR</h2>
-                        <p class="text-slate-300 text-base leading-relaxed">Dominada por la fuerza bruta. Zona equipada con bancos de competición, mancuernas de alto tonelaje y maquinaria de vanguardia para construir un torso de acero.</p>
-                        <div class="flex flex-wrap gap-3 pt-3 text-xs font-medium text-slate-400">
-                            <span class="bg-black px-3 py-1.5 rounded-lg border border-slate-800">Press Banca</span>
-                            <span class="bg-black px-3 py-1.5 rounded-lg border border-slate-800">Remo con Barra</span>
-                            <span class="bg-black px-3 py-1.5 rounded-lg border border-slate-800">Máquinas Convergentes</span>
-                        </div>
+                        <h3 class="text-3xl font-extrabold text-white tracking-tight">Área de Tronco Superior</h3>
+                        <p class="text-slate-300 text-base leading-relaxed">Zona equipada con bancos de competición, mancuernas de alto tonelaje y maquinaria especializada para torso.</p>
                     </div>
-                    <div class="md:w-1/2 bg-black/50 h-72 w-full rounded-2xl flex items-center justify-center border-2 border-dashed border-red-900/60 text-red-900/80 font-semibold">
-                        [GALERÍA PISO 1]
-                    </div>
+                    <div class="md:w-1/2 bg-black/50 h-56 w-full rounded-2xl flex items-center justify-center border border-red-900/40 text-red-900/80 font-semibold">[Foto Área Superior]</div>
                 </div>
 
-                <!-- PISO 2 -->
-                <div id="inferior" class="piso-card rounded-3xl p-8 md:p-16 flex flex-col md:flex-row-reverse items-center justify-between gap-12 transition duration-500 hover:border-red-900 shadow-xl">
+                <!-- Piso 2 -->
+                <div id="inferior" class="piso-card rounded-3xl p-8 md:p-12 flex flex-col md:flex-row-reverse items-center justify-between gap-12">
                     <div class="md:w-1/2 space-y-5">
                         <span class="text-red-gym font-black tracking-widest text-xs uppercase px-3 py-1 bg-red-950/70 rounded-full">NIVEL 02</span>
-                        <h2 class="text-4xl font-extrabold text-white tracking-tight">ÁREA DE TRONCO INFERIOR</h2>
-                        <p class="text-slate-300 text-base leading-relaxed">La base de tu poder. Construye piernas explosivas y un núcleo inquebrantable. Maquinaria especializada para sentadilla, prensa y desarrollo femoral.</p>
-                        <div class="flex flex-wrap gap-3 pt-3 text-xs font-medium text-slate-400">
-                            <span class="bg-black px-3 py-1.5 rounded-lg border border-slate-800">Prensa de Piernas</span>
-                            <span class="bg-black px-3 py-1.5 rounded-lg border border-slate-800">Hack Squat</span>
-                            <span class="bg-black px-3 py-1.5 rounded-lg border border-slate-800">Peso Muerto</span>
-                        </div>
+                        <h3 class="text-3xl font-extrabold text-white tracking-tight">Área de Tronco Inferior</h3>
+                        <p class="text-slate-300 text-base leading-relaxed">Construye piernas explosivas con maquinaria de punta para sentadilla, prensa y cadena posterior.</p>
                     </div>
-                    <div class="md:w-1/2 bg-black/50 h-72 w-full rounded-2xl flex items-center justify-center border-2 border-dashed border-red-900/60 text-red-900/80 font-semibold">
-                        [GALERÍA PISO 2]
-                    </div>
+                    <div class="md:w-1/2 bg-black/50 h-56 w-full rounded-2xl flex items-center justify-center border border-red-900/40 text-red-900/80 font-semibold">[Foto Área Inferior]</div>
                 </div>
 
-                <!-- PISO 3 -->
-                <div id="cardio" class="piso-card rounded-3xl p-8 md:p-16 flex flex-col md:flex-row items-center justify-between gap-12 transition duration-500 hover:border-red-900 shadow-xl">
+                <!-- Piso 3 -->
+                <div id="cardio" class="piso-card rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-12">
                     <div class="md:w-1/2 space-y-5">
                         <span class="text-red-gym font-black tracking-widest text-xs uppercase px-3 py-1 bg-red-950/70 rounded-full">NIVEL 03</span>
-                        <h2 class="text-4xl font-extrabold text-white tracking-tight">ÁREA DE CARDIO DE ÉLITE</h2>
-                        <p class="text-slate-300 text-base leading-relaxed">Potencia tu resistencia. Equipo de última generación para llevar tu capacidad cardiovascular al límite mientras dominas el entorno.</p>
-                        <div class="flex flex-wrap gap-3 pt-3 text-xs font-medium text-slate-400">
-                            <span class="bg-black px-3 py-1.5 rounded-lg border border-slate-800">Caminadoras de Alta Velocidad</span>
-                            <span class="bg-black px-3 py-1.5 rounded-lg border border-slate-800">Bicicletas Estáticas</span>
-                            <span class="bg-black px-3 py-1.5 rounded-lg border border-slate-800">Escaladoras</span>
+                        <h3 class="text-3xl font-extrabold text-white tracking-tight">Área de Cardio</h3>
+                        <p class="text-slate-300 text-base leading-relaxed">Resistencia aeróbica y quema de grasa optimizada con caminadoras, bicicletas y escaladoras avanzadas.</p>
+                    </div>
+                    <div class="md:w-1/2 bg-black/50 h-56 w-full rounded-2xl flex items-center justify-center border border-red-900/40 text-red-900/80 font-semibold">[Foto Área Cardio]</div>
+                </div>
+
+                <!-- Piso 4: Relajación (Nuevo) -->
+                <div id="relajacion" class="piso-card rounded-3xl p-8 md:p-12 flex flex-col md:flex-row-reverse items-center justify-between gap-12">
+                    <div class="md:w-1/2 space-y-5">
+                        <span class="text-red-gym font-black tracking-widest text-xs uppercase px-3 py-1 bg-red-950/70 rounded-full">NIVEL 04 - RECUPERACIÓN</span>
+                        <h3 class="text-3xl font-extrabold text-white tracking-tight">Área de Relajación y Hidromasaje</h3>
+                        <p class="text-slate-300 text-base leading-relaxed">Optimiza tu recuperación muscular tras el esfuerzo extremo con nuestras exclusivas tinas de hidromasaje y zona de descanso.</p>
+                    </div>
+                    <div class="md:w-1/2 bg-black/50 h-56 w-full rounded-2xl flex items-center justify-center border border-red-900/40 text-red-900/80 font-semibold">[Foto Tinas de Hidromasaje]</div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN DE PLANES Y CLASES -->
+            <section id="planes" class="max-w-7xl mx-auto px-4 py-24">
+                <div class="text-center mb-16">
+                    <span class="text-red-gym font-bold uppercase tracking-widest text-sm">Membresías</span>
+                    <h2 class="text-4xl md:text-6xl font-black text-white mt-2">ELIGE TU NIVEL DE COMPROMISO</h2>
+                    <p class="text-slate-400 mt-3 max-w-xl mx-auto">Haz clic en <strong class="text-white">"Ver Beneficios"</strong> en cada plan para conocer sus especificaciones completas.</p>
+                </div>
+
+                <!-- GRID DE PLANES -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+                    
+                    <!-- PLAN ESTUDIANTE -->
+                    <div class="plan-card rounded-3xl p-8 flex flex-col justify-between relative shadow-xl">
+                        <div>
+                            <span class="text-xs font-bold uppercase text-slate-400 tracking-wider">Básico</span>
+                            <h3 class="text-2xl font-black text-white mt-1 mb-4">PLAN ESTUDIANTE</h3>
+                            <div class="text-3xl font-extrabold text-red-gym mb-6">$XXX <span class="text-xs text-slate-400 font-normal">/ mes</span></div>
+                            <p class="text-slate-300 text-sm mb-6">Ideal para mantenerte en forma con acceso directo a lo esencial.</p>
+                        </div>
+                        <div>
+                            <button onclick="toggleDetails('detalles-estudiante')" class="w-full bg-black hover:bg-slate-900 border border-red-900/60 text-white font-bold py-3 rounded-xl transition text-sm mb-4">
+                                Ver Beneficios ▼
+                            </button>
+                            <div id="detalles-estudiante" class="hidden space-y-2 text-xs text-slate-300 pt-3 border-t border-slate-800">
+                                <p>✔️ Acceso exclusivo a las 3 áreas principales (Superior, Inferior, Cardio)</p>
+                                <p>❌ No incluye clases ni hidromasaje</p>
+                            </div>
+                            <a href="#contacto" class="block text-center bg-red-gym hover-red-gym text-white font-bold py-3 rounded-xl transition text-sm">¡QUIERO ESTE PLAN!</a>
                         </div>
                     </div>
-                    <div class="md:w-1/2 bg-black/50 h-72 w-full rounded-2xl flex items-center justify-center border-2 border-dashed border-red-900/60 text-red-900/80 font-semibold">
-                        [GALERÍA PISO 3]
+
+                    <!-- PLAN GUERRERO -->
+                    <div class="plan-card rounded-3xl p-8 flex flex-col justify-between relative shadow-2xl border-red-600/50">
+                        <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-red-gym text-white text-xs font-black uppercase px-4 py-1 rounded-full tracking-wider">Más Popular</div>
+                        <div>
+                            <span class="text-xs font-bold uppercase text-red-gym tracking-wider">Intermedio</span>
+                            <h3 class="text-2xl font-black text-white mt-1 mb-4">PLAN GUERRERO</h3>
+                            <div class="text-3xl font-extrabold text-red-gym mb-6">$XXX <span class="text-xs text-slate-400 font-normal">/ mes</span></div>
+                            <p class="text-slate-300 text-sm mb-6">Asesoría directa y disciplina especializada para romper tus límites.</p>
+                        </div>
+                        <div>
+                            <button onclick="toggleDetails('detalles-guerrero')" class="w-full bg-black hover:bg-slate-900 border border-red-900/60 text-white font-bold py-3 rounded-xl transition text-sm mb-4">
+                                Ver Beneficios ▼
+                            </button>
+                            <div id="detalles-guerrero" class="hidden space-y-2 text-xs text-slate-300 pt-3 border-t border-slate-800">
+                                <p>✔️ Acceso a las 3 áreas de entrenamiento</p>
+                                <p>✔️ Asesoría nutricional personalizada</p>
+                                <p>✔️ Acceso a 1 disciplina de clases a elegir</p>
+                            </div>
+                            <a href="#contacto" class="block text-center bg-red-gym hover-red-gym text-white font-bold py-3 rounded-xl transition text-sm">¡QUIERO ESTE PLAN!</a>
+                        </div>
+                    </div>
+
+                    <!-- PLAN ESPARTANO -->
+                    <div class="plan-card rounded-3xl p-8 flex flex-col justify-between relative shadow-xl">
+                        <div>
+                            <span class="text-xs font-bold uppercase text-amber-500 tracking-wider">Élite Total</span>
+                            <h3 class="text-2xl font-black text-white mt-1 mb-4">PLAN ESPARTANO</h3>
+                            <div class="text-3xl font-extrabold text-red-gym mb-6">$XXX <span class="text-xs text-slate-400 font-normal">/ mes</span></div>
+                            <p class="text-slate-300 text-sm mb-6">Acceso absoluto a toda la infraestructura, clases ilimitadas y recuperación.</p>
+                        </div>
+                        <div>
+                            <button onclick="toggleDetails('detalles-espartano')" class="w-full bg-black hover:bg-slate-900 border border-red-900/60 text-white font-bold py-3 rounded-xl transition text-sm mb-4">
+                                Ver Beneficios ▼
+                            </button>
+                            <div id="detalles-espartano" class="hidden space-y-2 text-xs text-slate-300 pt-3 border-t border-slate-800">
+                                <p>✔️ Acceso ilimitado a las 3 áreas de entrenamiento</p>
+                                <p>✔️ Acceso a Tinas de Hidromasaje (Área de Relajación)</p>
+                                <p>✔️ Acceso libre a CUALQUIER clase disponible</p>
+                            </div>
+                            <a href="#contacto" class="block text-center bg-red-gym hover-red-gym text-white font-bold py-3 rounded-xl transition text-sm">¡QUIERO ESTE PLAN!</a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- SECCIÓN DE CLASES ESPECIALES -->
+                <div class="piso-card rounded-3xl p-8 md:p-12">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl md:text-3xl font-black text-white">DISCIPLINAS Y CLASES ESPECIALES</h3>
+                        <p class="text-slate-400 text-sm mt-2">Horario de clases: <strong class="text-red-gym">10:00 AM a 5:00 PM</strong></p>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-4 text-center">
+                        <div class="bg-black/60 border border-slate-800 p-4 rounded-2xl"><span class="block font-bold text-white">Box</span><span class="text-xs text-slate-400">10:00 - 17:00 hrs</span></div>
+                        <div class="bg-black/60 border border-slate-800 p-4 rounded-2xl"><span class="block font-bold text-white">Tae-kwondo</span><span class="text-xs text-slate-400">10:00 - 17:00 hrs</span></div>
+                        <div class="bg-black/60 border border-slate-800 p-4 rounded-2xl"><span class="block font-bold text-white">Calistenia</span><span class="text-xs text-slate-400">10:00 - 17:00 hrs</span></div>
+                        <div class="bg-black/60 border border-slate-800 p-4 rounded-2xl"><span class="block font-bold text-white">Gimnasia</span><span class="text-xs text-slate-400">10:00 - 17:00 hrs</span></div>
+                        <div class="bg-black/60 border border-slate-800 p-4 rounded-2xl col-span-2 md:col-span-1"><span class="block font-bold text-white">Natación</span><span class="text-xs text-slate-400">10:00 - 17:00 hrs</span></div>
                     </div>
                 </div>
 
             </section>
         </main>
 
-        <!-- PIE DE PÁGINA -->
-        <footer class="bg-black/90 border-t border-red-900/60 py-10 mt-20 text-center text-slate-500 text-xs tracking-widest">
-            <p>&copy; 2026 SHARK GYM. LA FUERZA NO SE NEGOCIA.</p>
+        <!-- PIE DE PÁGINA Y TÉRMINOS Y CONDICIONES -->
+        <footer id="contacto" class="bg-black/95 border-t border-red-900/60 py-12 px-4 text-slate-500 text-xs">
+            <div class="max-w-7xl mx-auto space-y-6">
+                <div>
+                    <h4 class="text-white font-bold uppercase tracking-wider mb-2">Términos y Condiciones</h4>
+                    <p class="leading-relaxed text-slate-400">
+                        1. El acceso al gimnasio está sujeto al cumplimiento del reglamento interno y uso obligatorio de toalla.<br>
+                        2. Los horarios generales de operación son de lunes a domingo de 6:00 AM a 10:00 PM. Las clases especiales se imparten de 10:00 AM a 5:00 PM según disponibilidad del instructor y reservación previa en recepción.<br>
+                        3. Las membresías son personales e intransferibles. El uso de las tinas de hidromasaje del área de relajación requiere ducha previa y respeto a las normas de seguridad e higiene establecidas por el establecimiento.
+                    </p>
+                </div>
+                <div class="border-t border-slate-900 pt-6 flex flex-col md:flex-row justify-between items-center">
+                    <p>&copy; 2026 SHARK GYM. TODOS LOS DERECHOS RESERVADOS.</p>
+                    <p class="text-red-gym font-semibold mt-2 md:mt-0">LA FUERZA NO SE NEGOCIA.</p>
+                </div>
+            </div>
         </footer>
 
     </div>
 
+    <!-- SCRIPT INTERACTIVO PARA LOS PLANES -->
+    <script>
+        function toggleDetails(id) {
+            const element = document.getElementById(id);
+            if (element.classList.contains('hidden')) {
+                element.classList.remove('hidden');
+            } else {
+                element.classList.add('hidden');
+            }
+        }
+    </script>
 </body>
 </html>
